@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXORA — Smartwatch Face Studio</title>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<header><div><h1>NEXORA</h1><p>Smartwatch Face Studio</p></div>
+<div class="status"><span id="clock">--:--:--</span><span id="designName">Untitled design</span><span id="dirty" hidden>Unsaved changes</span></div></header>
+<p class="note">Visual designer and PNG exporter. Designs are not yet installable on a watch — see the Watch panel.</p>
+<main>
+<section class="stage"><div class="bezel"><canvas id="cv" width="720" height="840" aria-label="Watch face preview"></canvas></div>
+<div class="row"><button id="exportBtn" class="pri" title="Download the watch face as PNG">Download PNG</button>
+<button id="newBtn" title="Start a new design">New design</button>
+<button id="resetBtn" title="Restore default settings">Reset</button></div>
+<p id="msg" role="status"></p></section>
+<section class="panel" id="controls">
+<h2>Design</h2>
+<label>Clock style<select id="style"><option value="digital">Digital</option><option value="analog">Analog</option></select></label>
+<label>Position<select id="pos"><option value="top">Top</option><option value="center">Center</option><option value="bottom">Bottom</option></select></label>
+<label>Time size<input type="range" id="size" min="40" max="130"></label>
+<label>Time weight<select id="weight"><option>300</option><option>500</option><option>700</option><option>900</option></select></label>
+<label>Time colour<input type="color" id="timeColor"></label>
+<label>Accent colour<input type="color" id="accent"></label>
+<label>Background top<input type="color" id="bg1"></label>
+<label>Background bottom<input type="color" id="bg2"></label>
+<label class="chk"><input type="checkbox" id="showSec"> Show seconds</label>
+<label class="chk"><input type="checkbox" id="showDate"> Show date</label>
+<label>Date format<select id="dateFmt"><option value="long">Tue, 27 Oct</option><option value="short">27/10</option><option value="iso">2026-10-27</option></select></label>
+<label class="chk"><input type="checkbox" id="showMetrics"> Show battery, steps, heart rate (simulated)</label>
+<h2>Background image</h2>
+<input type="file" id="file" accept="image/png,image/jpeg,image/webp" hidden>
+<div class="row"><button id="pick">Choose photo</button><button id="rmImg">Remove</button></div>
+<label>Fit<select id="fit"><option value="cover">Fill screen</option><option value="contain">Fit inside</option><option value="stretch">Stretch</option></select></label>
+<label>Zoom<input type="range" id="zoom" min="50" max="300"></label>
+<label>Move left / right<input type="range" id="ox" min="-100" max="100"></label>
+<label>Move up / down<input type="range" id="oy" min="-100" max="100"></label>
+</section>
+<section class="panel"><h2>Saved designs</h2>
+<div class="row"><input id="saveName" placeholder="Design name" maxlength="40"><button id="saveBtn" class="pri">Save</button></div>
+<ul id="lib"></ul>
+<p class="small">Saved in this browser only (local storage). They don't sync across devices, and clearing site data deletes them. Large photos may exceed the browser's storage limit.</p>
+<h2>Watch</h2>
+<div class="row"><button id="connect">Connect watch</button><button id="upload" disabled title="Not available until the Haylou protocol is verified">Send to watch</button></div>
+<p id="ble" class="small">Not connected.</p>
+<p class="small">Sending a face to the Haylou Watch 2 Pro is <b>not implemented</b>. Its Bluetooth services, transfer protocol and face format are not publicly documented and have not been verified, so nothing is invented here. Connect only shows the device name your browser reports (Web Bluetooth: Chrome/Edge on desktop and Android; not iOS or Firefox).</p>
+</section></main>
+<script src="app.js"></script></body></html>
