@@ -1,1 +1,1 @@
-# nexora-watch-studio.
+# nexora-watch-studio
